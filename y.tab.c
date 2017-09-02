@@ -1244,60 +1244,60 @@ yyreduce:
   switch (yyn)
     {
         case 4:
-#line 48 "aula4.y" /* yacc.c:1661  */
+#line 48 "aula4.y" /* yacc.c:1646  */
     {comando_detectado = 0;}
-#line 1250 "y.tab.c" /* yacc.c:1661  */
+#line 1250 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 49 "aula4.y" /* yacc.c:1661  */
+#line 49 "aula4.y" /* yacc.c:1646  */
     {comando_detectado = 0;}
-#line 1256 "y.tab.c" /* yacc.c:1661  */
+#line 1256 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 50 "aula4.y" /* yacc.c:1661  */
+#line 50 "aula4.y" /* yacc.c:1646  */
     {comando_detectado = 0;}
-#line 1262 "y.tab.c" /* yacc.c:1661  */
+#line 1262 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 51 "aula4.y" /* yacc.c:1661  */
+#line 51 "aula4.y" /* yacc.c:1646  */
     {comando_detectado = 0;}
-#line 1268 "y.tab.c" /* yacc.c:1661  */
+#line 1268 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 53 "aula4.y" /* yacc.c:1661  */
+#line 53 "aula4.y" /* yacc.c:1646  */
     {comando_detectado = 1;
                         strcpy(comandoTxt, (yyvsp[-1].str));
                         add_command_list(&comandoTxt);
                        }
-#line 1277 "y.tab.c" /* yacc.c:1661  */
+#line 1277 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 68 "aula4.y" /* yacc.c:1661  */
+#line 68 "aula4.y" /* yacc.c:1646  */
     { if(comando_detectado){
                                 strcpy(paramTxt, (yyvsp[-1].str));
                                 add_param_list_begin(&paramTxt);
                              }
                            }
-#line 1287 "y.tab.c" /* yacc.c:1661  */
+#line 1287 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 74 "aula4.y" /* yacc.c:1661  */
+#line 74 "aula4.y" /* yacc.c:1646  */
     { if(comando_detectado){
                                 strcpy(paramTxt, (yyvsp[-1].str));
                                 add_param_list_begin(&paramTxt);
                              }
                            }
-#line 1297 "y.tab.c" /* yacc.c:1661  */
+#line 1297 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1301 "y.tab.c" /* yacc.c:1661  */
+#line 1301 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1529,7 +1529,6 @@ yyreturn:
 
 
 void print_list() {
-    printf(" ---------------- PRINTANDO LISTA ----------------------\n");
     command_list * current = list;
     
     while (current != NULL) {
@@ -1543,7 +1542,6 @@ void print_list() {
         
         current = current->next;
     }
-    printf(" ------------------------------------------------------\n");
 }
 
 void add_command_list(char *command) {
@@ -1575,7 +1573,6 @@ void add_command_list(char *command) {
 
 
 void add_param_list_begin(char *param) {
-    printf(param);
     
     command_list * current = list;
     

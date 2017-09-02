@@ -83,7 +83,6 @@ palavra : PALAVRA
 %%
 
 void print_list() {
-    printf(" ---------------- PRINTANDO LISTA ----------------------\n");
     command_list * current = list;
     
     while (current != NULL) {
@@ -97,7 +96,6 @@ void print_list() {
         
         current = current->next;
     }
-    printf(" ------------------------------------------------------\n");
 }
 
 void add_command_list(char *command) {
@@ -129,7 +127,6 @@ void add_command_list(char *command) {
 
 
 void add_param_list_begin(char *param) {
-    printf(param);
     
     command_list * current = list;
     
