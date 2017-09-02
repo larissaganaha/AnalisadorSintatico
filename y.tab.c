@@ -67,6 +67,16 @@
   #include <stdio.h>
   #include <stdlib.h>
   #include <string.h>
+
+  //cores de print
+  #define RED   "\x1B[31m"
+  #define GRN   "\x1B[32m"
+  #define YEL   "\x1B[33m"
+  #define BLU   "\x1B[34m"
+  #define MAG   "\x1B[35m"
+  #define CYN   "\x1B[36m"
+  #define WHT   "\x1B[37m"
+  #define RESET "\x1B[0m"
   
   void add_command_list(char *command);
   void add_param_list_begin(char *param);
@@ -88,12 +98,13 @@
   
   //flags de controle
   int comando_detectado = 0;
+  int nLinha = 0;
   char comandoTxt[30];
   char paramTxt[30];
 
 
 
-#line 97 "y.tab.c" /* yacc.c:339  */
+#line 108 "y.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -131,7 +142,8 @@ extern int yydebug;
     PALAVRA = 258,
     VIRGULA = 259,
     NL = 260,
-    DP = 261
+    DP = 261,
+    INVALIDO = 262
   };
 #endif
 /* Tokens.  */
@@ -139,17 +151,18 @@ extern int yydebug;
 #define VIRGULA 259
 #define NL 260
 #define DP 261
+#define INVALIDO 262
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 33 "aula4.y" /* yacc.c:355  */
+#line 44 "aula4.y" /* yacc.c:355  */
 
   char str[30];
 
-#line 153 "y.tab.c" /* yacc.c:355  */
+#line 166 "y.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -166,7 +179,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 170 "y.tab.c" /* yacc.c:358  */
+#line 183 "y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -411,7 +424,7 @@ union yyalloc
 #define YYLAST   20
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  7
+#define YYNTOKENS  8
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  10
 /* YYNRULES -- Number of rules.  */
@@ -422,7 +435,7 @@ union yyalloc
 /* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
    by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   261
+#define YYMAXUTOK   262
 
 #define YYTRANSLATE(YYX)                                                \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -457,15 +470,15 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6
+       5,     6,     7
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    44,    44,    45,    48,    49,    50,    51,    53,    58,
-      59,    62,    63,    65,    66,    68,    74,    80
+       0,    55,    55,    56,    59,    61,    63,    66,    69,    74,
+      75,    78,    79,    81,    82,    84,    90,    96
 };
 #endif
 
@@ -475,8 +488,8 @@ static const yytype_uint8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "PALAVRA", "VIRGULA", "NL", "DP",
-  "$accept", "linhas", "linha", "comando", "erro", "parametro_final",
-  "parametros", "parametro_NL", "parametro", "palavra", YY_NULLPTR
+  "INVALIDO", "$accept", "linhas", "linha", "comando", "erro",
+  "parametro_final", "parametros", "parametro_NL", "parametro", "palavra", YY_NULLPTR
 };
 #endif
 
@@ -485,7 +498,7 @@ static const char *const yytname[] =
    (internal) symbol number NUM (which must be that of a token).  */
 static const yytype_uint16 yytoknum[] =
 {
-       0,   256,   257,   258,   259,   260,   261
+       0,   256,   257,   258,   259,   260,   261,   262
 };
 # endif
 
@@ -551,16 +564,16 @@ static const yytype_uint8 yycheck[] =
      symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,     5,     6,     8,     9,    10,    11,    16,     5,
-      12,    13,    14,    15,    16,     0,     9,     5,    12,     6,
-      14,    15,     4,     5
+       0,     3,     5,     6,     9,    10,    11,    12,    17,     5,
+      13,    14,    15,    16,    17,     0,    10,     5,    13,     6,
+      15,    16,     4,     5
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,     7,     8,     8,     9,     9,     9,     9,    10,    11,
-      11,    12,    12,    13,    13,    14,    15,    16
+       0,     8,     9,     9,    10,    10,    10,    10,    11,    12,
+      12,    13,    13,    14,    14,    15,    16,    17
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -1244,60 +1257,65 @@ yyreduce:
   switch (yyn)
     {
         case 4:
-#line 48 "aula4.y" /* yacc.c:1646  */
-    {comando_detectado = 0;}
-#line 1250 "y.tab.c" /* yacc.c:1646  */
+#line 59 "aula4.y" /* yacc.c:1646  */
+    {nLinha++;
+                                    comando_detectado = 0;}
+#line 1264 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 49 "aula4.y" /* yacc.c:1646  */
-    {comando_detectado = 0;}
-#line 1256 "y.tab.c" /* yacc.c:1646  */
+#line 61 "aula4.y" /* yacc.c:1646  */
+    {nLinha++;
+                            comando_detectado = 0;}
+#line 1271 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 50 "aula4.y" /* yacc.c:1646  */
-    {comando_detectado = 0;}
-#line 1262 "y.tab.c" /* yacc.c:1646  */
+#line 63 "aula4.y" /* yacc.c:1646  */
+    {nLinha++;
+                        comando_detectado = 0;
+                        fprintf(stderr,RED "Erro(l_%d): Nao ha comando valido.\n" RESET, nLinha);}
+#line 1279 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 51 "aula4.y" /* yacc.c:1646  */
-    {comando_detectado = 0;}
-#line 1268 "y.tab.c" /* yacc.c:1646  */
+#line 66 "aula4.y" /* yacc.c:1646  */
+    {nLinha++;
+                        comando_detectado = 0;}
+#line 1286 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 53 "aula4.y" /* yacc.c:1646  */
+#line 69 "aula4.y" /* yacc.c:1646  */
     {comando_detectado = 1;
                         strcpy(comandoTxt, (yyvsp[-1].str));
                         add_command_list(&comandoTxt);
                        }
-#line 1277 "y.tab.c" /* yacc.c:1646  */
+#line 1295 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 68 "aula4.y" /* yacc.c:1646  */
+#line 84 "aula4.y" /* yacc.c:1646  */
     { if(comando_detectado){
                                 strcpy(paramTxt, (yyvsp[-1].str));
                                 add_param_list_begin(&paramTxt);
                              }
                            }
-#line 1287 "y.tab.c" /* yacc.c:1646  */
+#line 1305 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 74 "aula4.y" /* yacc.c:1646  */
+#line 90 "aula4.y" /* yacc.c:1646  */
     { if(comando_detectado){
                                 strcpy(paramTxt, (yyvsp[-1].str));
                                 add_param_list_begin(&paramTxt);
                              }
                            }
-#line 1297 "y.tab.c" /* yacc.c:1646  */
+#line 1315 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1301 "y.tab.c" /* yacc.c:1646  */
+#line 1319 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1525,7 +1543,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 83 "aula4.y" /* yacc.c:1906  */
+#line 99 "aula4.y" /* yacc.c:1906  */
 
 
 void print_list() {

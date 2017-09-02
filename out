@@ -1,0 +1,16 @@
+comando_a
+	Parâmetro: x3294549
+	Parâmetro: 324234
+	Parâmetro: opção_a1
+	Parâmetro: parâmetro_a2
+	Parâmetro: parâmetro_a1
+comando_b
+	Parâmetro: parametro_xyz
+	Parâmetro: opção_b2
+	Parâmetro: opção_b1
+comando_c
+comando_d
+	Parâmetro: opção_inexistente
+	Parâmetro: 1
+	Parâmetro: 22
+	Parâmetro: parâmetro_d

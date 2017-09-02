@@ -48,7 +48,8 @@ extern int yydebug;
     PALAVRA = 258,
     VIRGULA = 259,
     NL = 260,
-    DP = 261
+    DP = 261,
+    INVALIDO = 262
   };
 #endif
 /* Tokens.  */
@@ -56,17 +57,18 @@ extern int yydebug;
 #define VIRGULA 259
 #define NL 260
 #define DP 261
+#define INVALIDO 262
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 33 "aula4.y" /* yacc.c:1909  */
+#line 44 "aula4.y" /* yacc.c:1909  */
 
   char str[30];
 
-#line 70 "y.tab.h" /* yacc.c:1909  */
+#line 72 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

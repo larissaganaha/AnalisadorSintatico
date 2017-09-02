@@ -19,5 +19,7 @@
 		  return(NL);
 		}
 [ ]     ;
-[#].*\n  ;
+[#].*   ;
+.		return(INVALIDO);
+
 %%
