@@ -38,56 +38,46 @@
 %token VIRGULA NL DP
 
 %type <str> palavra comando DP parametro parametro_NL
-//falta colocar o tipo de outras variaveisss
 
 %%
 
-linhas  :   linhas linha        {}
-        | linha             {}
+linhas  :   linhas linha
+        | linha
 
 
-linha   :   comando parametro_final {comando_detectado = 0; printf(" -------- Match linha --------\n\n"); /*print_list();*/}
-            | comando NL		{comando_detectado = 0; printf(" -------- Match linha --------\n\n"); /*print_list();*/}
-            | erro      {comando_detectado = 0; printf(" -------- Match linha --------\n\n");}
-            | NL        {comando_detectado = 0; printf(" -------- Match linha --------\n\n"); /*print_list();*/}
+linha   :   comando parametro_final {comando_detectado = 0;}
+            | comando NL		{comando_detectado = 0;}
+            | erro      {comando_detectado = 0;}
+            | NL        {comando_detectado = 0;}
 
-comando :	palavra DP { comando_detectado = 1;
-                        printf("PALAVRA = %s\n\n", $2);
+comando :	palavra DP {comando_detectado = 1;
                         strcpy(comandoTxt, $1);
                         add_command_list(&comandoTxt);
-                         printf("Match comando\n\n"); };
+                       };
 
-erro    :  DP parametro_final    {fprintf(stderr, "~~ ERRO ~~\n");};
-        | DP NL                 {fprintf(stderr, "~~ ERRO ~~\n");};
+erro    :  DP parametro_final
+        |  DP NL
 
 
-parametro_final :   parametros parametro_NL    { printf("Match parametro_final\n\n");}
-                | parametro_NL		    {
-                                            printf("match parametro\n\n");
-                                            
-                                        };
+parametro_final :   parametros parametro_NL
+                |   parametro_NL
 
-parametros  :   parametro		   { printf("match parametros\n\n");}
-            | parametros parametro { printf("match parametros\n\n");};
+parametros  :   parametro
+            |   parametros parametro
 
-parametro_NL: palavra NL   {if(comando_detectado){
-    strcpy(paramTxt, $1);
-    printf("PARAM_NL = %s\n\n", paramTxt);
-    
-    add_param_list_begin(&paramTxt);
-    printf("match parametro_NL\n\n");}
-};
+parametro_NL: palavra NL   { if(comando_detectado){
+                                strcpy(paramTxt, $1);
+                                add_param_list_begin(&paramTxt);
+                             }
+                           };
 
 parametro: palavra VIRGULA { if(comando_detectado){
                                 strcpy(paramTxt, $1);
-                                printf("PARAM = %s\n\n", paramTxt);
                                 add_param_list_begin(&paramTxt);
-                                 printf("match parametro\n\n");
                              }
-                           }
+                           };
 
-palavra : PALAVRA {printf("PALAVRA = %s\n\n", $1);
-                    };
+palavra : PALAVRA
 
 
 %%
@@ -111,10 +101,8 @@ void print_list() {
 }
 
 void add_command_list(char *command) {
-    printf("Entrei\n");
     //se a lista nao tiver sido criada, cria o primeiro elemento
     if(list == NULL){
-        printf("Entrei2\n");
 
         list = malloc(sizeof(command_list));
         
@@ -124,7 +112,6 @@ void add_command_list(char *command) {
         
         return;
     }
-    printf("sai\n");
 
     command_list * current = list;
     
@@ -142,7 +129,6 @@ void add_command_list(char *command) {
 
 
 void add_param_list_begin(char *param) {
-    printf("Entreii param\n");
     printf(param);
     
     command_list * current = list;
@@ -153,7 +139,6 @@ void add_param_list_begin(char *param) {
     
     //se a lista de parametros nao tiver sido criada, cria o primeiro elemento
     if(current->params == NULL){
-        printf("Entreii param2\n");
         
         current->params = malloc(sizeof(param_list));
         
@@ -162,8 +147,6 @@ void add_param_list_begin(char *param) {
         
         return;
     }
-    printf("Sai param\n");
-    
     param_list * new_node;
     new_node = malloc(sizeof(param_list));
     

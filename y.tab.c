@@ -464,8 +464,8 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    45,    45,    46,    49,    50,    51,    52,    54,    60,
-      61,    64,    65,    70,    71,    73,    81,    89
+       0,    44,    44,    45,    48,    49,    50,    51,    53,    58,
+      59,    62,    63,    65,    66,    68,    74,    80
 };
 #endif
 
@@ -1243,124 +1243,61 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 2:
-#line 45 "aula4.y" /* yacc.c:1661  */
-    {}
+        case 4:
+#line 48 "aula4.y" /* yacc.c:1661  */
+    {comando_detectado = 0;}
 #line 1250 "y.tab.c" /* yacc.c:1661  */
     break;
 
-  case 3:
-#line 46 "aula4.y" /* yacc.c:1661  */
-    {}
+  case 5:
+#line 49 "aula4.y" /* yacc.c:1661  */
+    {comando_detectado = 0;}
 #line 1256 "y.tab.c" /* yacc.c:1661  */
     break;
 
-  case 4:
-#line 49 "aula4.y" /* yacc.c:1661  */
-    {comando_detectado = 0; printf(" -------- Match linha --------\n\n"); /*print_list();*/}
+  case 6:
+#line 50 "aula4.y" /* yacc.c:1661  */
+    {comando_detectado = 0;}
 #line 1262 "y.tab.c" /* yacc.c:1661  */
     break;
 
-  case 5:
-#line 50 "aula4.y" /* yacc.c:1661  */
-    {comando_detectado = 0; printf(" -------- Match linha --------\n\n"); /*print_list();*/}
+  case 7:
+#line 51 "aula4.y" /* yacc.c:1661  */
+    {comando_detectado = 0;}
 #line 1268 "y.tab.c" /* yacc.c:1661  */
     break;
 
-  case 6:
-#line 51 "aula4.y" /* yacc.c:1661  */
-    {comando_detectado = 0; printf(" -------- Match linha --------\n\n");}
-#line 1274 "y.tab.c" /* yacc.c:1661  */
-    break;
-
-  case 7:
-#line 52 "aula4.y" /* yacc.c:1661  */
-    {comando_detectado = 0; printf(" -------- Match linha --------\n\n"); /*print_list();*/}
-#line 1280 "y.tab.c" /* yacc.c:1661  */
-    break;
-
   case 8:
-#line 54 "aula4.y" /* yacc.c:1661  */
-    { comando_detectado = 1;
-                        printf("PALAVRA = %s\n\n", (yyvsp[0].str));
+#line 53 "aula4.y" /* yacc.c:1661  */
+    {comando_detectado = 1;
                         strcpy(comandoTxt, (yyvsp[-1].str));
                         add_command_list(&comandoTxt);
-                         printf("Match comando\n\n"); }
-#line 1290 "y.tab.c" /* yacc.c:1661  */
-    break;
-
-  case 9:
-#line 60 "aula4.y" /* yacc.c:1661  */
-    {fprintf(stderr, "~~ ERRO ~~\n");}
-#line 1296 "y.tab.c" /* yacc.c:1661  */
-    break;
-
-  case 10:
-#line 61 "aula4.y" /* yacc.c:1661  */
-    {fprintf(stderr, "~~ ERRO ~~\n");}
-#line 1302 "y.tab.c" /* yacc.c:1661  */
-    break;
-
-  case 11:
-#line 64 "aula4.y" /* yacc.c:1661  */
-    { printf("Match parametro_final\n\n");}
-#line 1308 "y.tab.c" /* yacc.c:1661  */
-    break;
-
-  case 12:
-#line 65 "aula4.y" /* yacc.c:1661  */
-    {
-                                            printf("match parametro\n\n");
-                                            
-                                        }
-#line 1317 "y.tab.c" /* yacc.c:1661  */
-    break;
-
-  case 13:
-#line 70 "aula4.y" /* yacc.c:1661  */
-    { printf("match parametros\n\n");}
-#line 1323 "y.tab.c" /* yacc.c:1661  */
-    break;
-
-  case 14:
-#line 71 "aula4.y" /* yacc.c:1661  */
-    { printf("match parametros\n\n");}
-#line 1329 "y.tab.c" /* yacc.c:1661  */
+                       }
+#line 1277 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 15:
-#line 73 "aula4.y" /* yacc.c:1661  */
-    {if(comando_detectado){
-    strcpy(paramTxt, (yyvsp[-1].str));
-    printf("PARAM_NL = %s\n\n", paramTxt);
-    
-    add_param_list_begin(&paramTxt);
-    printf("match parametro_NL\n\n");}
-}
-#line 1341 "y.tab.c" /* yacc.c:1661  */
+#line 68 "aula4.y" /* yacc.c:1661  */
+    { if(comando_detectado){
+                                strcpy(paramTxt, (yyvsp[-1].str));
+                                add_param_list_begin(&paramTxt);
+                             }
+                           }
+#line 1287 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 16:
-#line 81 "aula4.y" /* yacc.c:1661  */
+#line 74 "aula4.y" /* yacc.c:1661  */
     { if(comando_detectado){
                                 strcpy(paramTxt, (yyvsp[-1].str));
-                                printf("PARAM = %s\n\n", paramTxt);
                                 add_param_list_begin(&paramTxt);
-                                 printf("match parametro\n\n");
                              }
                            }
-#line 1353 "y.tab.c" /* yacc.c:1661  */
-    break;
-
-  case 17:
-#line 89 "aula4.y" /* yacc.c:1661  */
-    {printf("PALAVRA = %s\n\n", (yyvsp[0].str));
-                    }
-#line 1360 "y.tab.c" /* yacc.c:1661  */
+#line 1297 "y.tab.c" /* yacc.c:1661  */
     break;
 
 
-#line 1364 "y.tab.c" /* yacc.c:1661  */
+#line 1301 "y.tab.c" /* yacc.c:1661  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1588,7 +1525,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 93 "aula4.y" /* yacc.c:1906  */
+#line 83 "aula4.y" /* yacc.c:1906  */
 
 
 void print_list() {
@@ -1610,10 +1547,8 @@ void print_list() {
 }
 
 void add_command_list(char *command) {
-    printf("Entrei\n");
     //se a lista nao tiver sido criada, cria o primeiro elemento
     if(list == NULL){
-        printf("Entrei2\n");
 
         list = malloc(sizeof(command_list));
         
@@ -1623,7 +1558,6 @@ void add_command_list(char *command) {
         
         return;
     }
-    printf("sai\n");
 
     command_list * current = list;
     
@@ -1641,7 +1575,6 @@ void add_command_list(char *command) {
 
 
 void add_param_list_begin(char *param) {
-    printf("Entreii param\n");
     printf(param);
     
     command_list * current = list;
@@ -1652,7 +1585,6 @@ void add_param_list_begin(char *param) {
     
     //se a lista de parametros nao tiver sido criada, cria o primeiro elemento
     if(current->params == NULL){
-        printf("Entreii param2\n");
         
         current->params = malloc(sizeof(param_list));
         
@@ -1661,8 +1593,6 @@ void add_param_list_begin(char *param) {
         
         return;
     }
-    printf("Sai param\n");
-    
     param_list * new_node;
     new_node = malloc(sizeof(param_list));
     
