@@ -1,5 +1,5 @@
 # AnalisadorSintatico
-Módulo 2
+Módulo 2 - 
 Atividades Práticas
 
 Geração de parser para desmembramento de comandos e armazenamento de informações
