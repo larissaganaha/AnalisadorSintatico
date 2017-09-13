@@ -8,6 +8,10 @@
 [a-zA-Z0-9_Ç-Û]+ 	{ sscanf(yytext, "%s", &yylval.str);
 		  return (PALAVRA);
 		}
+localhost:[0-9]+				{sscanf(yytext, "%s", &yylval.str);
+		  return (PALAVRA);
+		}
+
 :		{ sscanf(yytext, "%s", &yylval.str);
 		  return(DP);
 		}
