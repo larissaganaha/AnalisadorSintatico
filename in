@@ -9,4 +9,10 @@ comando_c :
 
 comando_d: parâmetro_d, 22, 1, opção_inexistente
 
+Mensagem Recebida:
 Host: localhost:3000
+Upgrade-Insecure-Requests: 1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
