@@ -19,13 +19,13 @@
   void print_list();
 
   typedef struct command_list{
-      char command[30];
+      char command[200];
       struct command_list *next;
       struct param_list *params;
   } command_list;
 
   typedef struct param_list{
-      char param[30];
+      char param[200];
       struct param_list *next;
   } param_list;
 
@@ -35,18 +35,19 @@
   //flags de controle
   int comando_detectado = 0;
   int nLinha = 0;
-  char comandoTxt[30];
-  char paramTxt[30];
+  char comandoTxt[200];
+  char paramTxt[200];
+  char frase[200];
 
 
 %}
 
 %union {
-  char str[30];
+  char str[200];
 }
 
-%token <str> PALAVRA
-%token VIRGULA NL DP INVALIDO
+%token <str> PALAVRA COMANDO
+%token VIRGULA NL DP INVALIDO 
 
 %type <str> palavra comando DP parametro parametro_NL
 
@@ -58,6 +59,9 @@ linhas  :   linhas linha
 
 linha   :   comando parametro_final {nLinha++;
                                     comando_detectado = 0;}
+            |comando_sp NL          {add_param_list_begin(&frase);
+                                    nLinha++;
+                                    comando_detectado = 0;}
             | comando NL		{nLinha++;
                             comando_detectado = 0;}
             | erro      {nLinha++;
@@ -66,10 +70,17 @@ linha   :   comando parametro_final {nLinha++;
             | NL        {nLinha++;
                         comando_detectado = 0;}
 
-comando :	palavra DP {comando_detectado = 1;
+comando_sp : COMANDO   {frase[0] = '\0';
                         strcpy(comandoTxt, $1);
-                        add_command_list(&comandoTxt);
-                       };
+                        add_command_list(&comandoTxt);}
+            |comando_sp VIRGULA {strcat(frase, ",");}
+            |comando_sp DP      {strcat(frase, ":");}            
+            |comando_sp palavra {strcat(frase, $2);}
+
+comando :	palavra DP {comando_detectado = 1;
+                        frase[0] = '\0';
+                        strcpy(comandoTxt, $1);
+                        add_command_list(&comandoTxt);}
 
 erro    :  DP parametro_final
         |  DP NL
