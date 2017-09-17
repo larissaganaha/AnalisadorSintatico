@@ -481,7 +481,7 @@ static const yytype_uint8 yytranslate[] =
 static const yytype_uint8 yyrline[] =
 {
        0,    56,    56,    57,    60,    62,    65,    67,    70,    73,
-      76,    77,    78,    80,    85,    86,    89,    90,    92,    93,
+      76,    77,    78,    81,    85,    86,    89,    90,    92,    93,
       95,   101,   107
 };
 #endif
@@ -1324,14 +1324,14 @@ yyreduce:
 
   case 12:
 #line 78 "aula4.y" /* yacc.c:1646  */
-    {strcat(frase, (yyvsp[0].str));}
-#line 1329 "y.tab.c" /* yacc.c:1646  */
+    {strcat(frase, " ");
+                                strcat(frase, (yyvsp[0].str));}
+#line 1330 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 80 "aula4.y" /* yacc.c:1646  */
+#line 81 "aula4.y" /* yacc.c:1646  */
     {comando_detectado = 1;
-                        frase[0] = '\0';
                         strcpy(comandoTxt, (yyvsp[-1].str));
                         add_command_list(&comandoTxt);}
 #line 1338 "y.tab.c" /* yacc.c:1646  */

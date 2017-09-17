@@ -75,10 +75,10 @@ comando_sp : COMANDO   {frase[0] = '\0';
                         add_command_list(&comandoTxt);}
             |comando_sp VIRGULA {strcat(frase, ",");}
             |comando_sp DP      {strcat(frase, ":");}            
-            |comando_sp palavra {strcat(frase, $2);}
+            |comando_sp palavra {strcat(frase, " ");
+                                strcat(frase, $2);}
 
 comando :	palavra DP {comando_detectado = 1;
-                        frase[0] = '\0';
                         strcpy(comandoTxt, $1);
                         add_command_list(&comandoTxt);}
 
